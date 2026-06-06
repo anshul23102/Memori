@@ -159,9 +159,7 @@ def test_attribution_rejects_empty_process_id(mocker):
     mock_conn.cursor = mocker.MagicMock(return_value=mock_cursor)
 
     with pytest.raises(ValueError) as e:
-        Memori(conn=lambda: mock_conn).attribution(
-            entity_id="user-1", process_id=""
-        )
+        Memori(conn=lambda: mock_conn).attribution(entity_id="user-1", process_id="")
 
     assert str(e.value) == "process_id cannot be empty"
 
